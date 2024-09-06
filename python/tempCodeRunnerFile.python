@@ -1,0 +1,44 @@
+class ChessPiece:
+    def __init__(self, color):
+        self.color = color
+
+class Pawn(ChessPiece):
+    def __init__(self, color):
+        super().__init__(color)
+        self.name = "Pawn"
+
+    def move(self):
+        # Implement pawn movement logic
+        pass
+
+# Define other chess pieces similarly (Rook, Knight, Bishop, Queen, King)
+
+class Chessboard:
+    def __init__(self):
+        self.board = [[None] * 8 for _ in range(8)]
+        self.current_player = "white"  # Start with white player
+
+    def initialize_pieces(self):
+        # Initialize pieces on the board
+        # Example: self.board[1][0] = Pawn("white")
+
+    def display_board(self):
+        # Display the current state of the board
+        for row in self.board:
+            print(" ".join(str(piece) if piece else "-" for piece in row))
+
+    def switch_player(self):
+        self.current_player = "black" if self.current_player == "white" else "white"
+
+    def play_game(self):
+        while True:
+            self.display_board()
+            print(f"{self.current_player.capitalize()}'s turn:")
+            # Get user input for move (e.g., "a2 to a4")
+            # Validate move and update board
+            self.switch_player()
+
+if __name__ == "__main__":
+    chessboard = Chessboard()
+    chessboard.initialize_pieces()
+    chessboard.play_game()
